@@ -39,7 +39,6 @@ public class PracticeFormTests {
     By btnDdlCity = new By.ByCssSelector("#city");
     By optionCity = new By.ByXPath("//*[.='Noida']");
     By btnSubmit = new By.ByCssSelector("#submit");
-
     //Форма с веденными данными
     By table = new By.ByXPath("//tr/td");
     By tableCell = new By.ByXPath("./td[2]");
@@ -54,18 +53,8 @@ public class PracticeFormTests {
         return se = $$(table).find(Condition.text(nameOfCollum)).parent().$(tableCell);
     }
 
-    @BeforeAll
-    static void beforeAll() {
-        Configuration.startMaximized = true;
-    }
-
-    @BeforeEach
-    void BeforeEach() {
-        open("https://demoqa.com/automation-practice-form");
-    }
-
-    @Test
-    void checkFullParameters() {
+    //Заполнение формы полностью
+    public void fullInTheForm(){
         $(inputFirstName).setValue(student.getFirstName());
         $(inputLastName).setValue(student.getLastName());
         $(inputUserEmail).setValue(student.getEmail());
@@ -89,8 +78,9 @@ public class PracticeFormTests {
         $(btnDdlCity).hover().click();
         $(optionCity).scrollIntoView(true).click();
         $(btnSubmit).scrollIntoView(true).click();
-
-        //проверка формы
+    }
+    //проверка формы
+    public void checkForm(){
         tableElement("Student Name").shouldHave(Condition.text(student.getFullName()));
         tableElement("Student Email").shouldHave(Condition.text(student.getEmail()));
         tableElement("Gender").shouldHave(Condition.text("Other"));
@@ -101,9 +91,34 @@ public class PracticeFormTests {
         tableElement("Picture").shouldHave(Condition.text("cat.jpg"));
         tableElement("Address").shouldHave(Condition.text(student.getCurrentAddress()));
         tableElement("State and City").shouldHave(Condition.text("NCR Noida"));
+    }
 
+    @BeforeAll
+    static void beforeAll() {
+        Configuration.startMaximized = true;
+    }
+
+    @BeforeEach
+    void BeforeEach() {
+        open("https://demoqa.com/automation-practice-form");
+    }
+
+    @Test
+    void checkFullParameters() {
+        fullInTheForm();
+    }
+
+    @Test
+    void checkDataInForm(){
+        fullInTheForm();
+        checkForm();
+    }
+
+    @Test
+    void checkClearForm(){
+        fullInTheForm();
+        checkForm();
         $(btnClose).scrollIntoView(true).click();
-
         //Проверка, что после закрытия форма пустая
         $(inputFirstName).shouldBe(Condition.empty);
         $(inputLastName).shouldBe(Condition.empty);
