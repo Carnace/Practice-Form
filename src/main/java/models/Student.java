@@ -14,10 +14,13 @@ public class Student {
     private String month = "May";
     private String year = "1977";
     private String subjects = "History";
-    private String currentAddress= "Немного текста";
+    private String currentAddress = "Немного текста";
 
-    public String getFullName(){
+    public String getFullName() {
         return firstName + " " + lastName;
     }
-    public String detDateOfBirth(){return day + " " + month + "," + year;}
+
+    public String detDateOfBirth() {
+        return day + " " + month + "," + year;
+    }
 }

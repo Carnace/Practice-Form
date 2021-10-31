@@ -17,32 +17,31 @@ import static com.codeborne.selenide.Selenide.*;
 
 public class PracticeFormTests {
     //Поля
-    By inputFirstName = new By.ByCssSelector("#firstName");
-    By inputLastName = new By.ByCssSelector("#lastName");
-    By inputUserEmail = new By.ByCssSelector("#userEmail");
-    By radioBtnGenderOther = new By.ByCssSelector("[for='gender-radio-3']");
-    By inputMobile = new By.ByCssSelector("#userNumber");
-    By inputDateOfBirth = new By.ByCssSelector("#dateOfBirthInput");
-    By btnMonth = new By.ByCssSelector(".react-datepicker__month-select");
-    By optionMonthOrYear = new By.ByCssSelector("option");
-    By btnYear = new By.ByCssSelector(".react-datepicker__year-select");
-    By btnDay = new By.ByCssSelector("[role='option']");
-    By inputSubjects = new By.ByCssSelector("#subjectsInput");
-    By optionSubjects = new By.ByCssSelector("#react-select-2-option-0");
-    By checkBoxHobbiesSports = new By.ByCssSelector("[for='hobbies-checkbox-1']");
-    By checkBoxHobbiesReading = new By.ByCssSelector("[for='hobbies-checkbox-2']");
-    By checkBoxHobbiesMusic = new By.ByCssSelector("[for='hobbies-checkbox-3']");
-    By btnSelectPicture = new By.ByCssSelector("#uploadPicture");
-    By inputCurrentAddress = new By.ByCssSelector("#currentAddress");
-    By btnDdlState = new By.ByCssSelector("#state");
+    String inputFirstName = ("#firstName");
+    String inputLastName = ("#lastName");
+    String inputUserEmail = ("#userEmail");
+    String radioBtnGenderOther = ("[for='gender-radio-3']");
+    String inputMobile = ("#userNumber");
+    String inputDateOfBirth = ("#dateOfBirthInput");
+    String btnMonth = (".react-datepicker__month-select");
+    String btnYear = (".react-datepicker__year-select");
+    String btnDay = ("[role='option']");
+    String inputSubjects = ("#subjectsInput");
+    String optionSubjects = ("#react-select-2-option-0");
+    String checkBoxHobbiesSports = ("[for='hobbies-checkbox-1']");
+    String checkBoxHobbiesReading = ("[for='hobbies-checkbox-2']");
+    String checkBoxHobbiesMusic = ("[for='hobbies-checkbox-3']");
+    String btnSelectPicture = ("#uploadPicture");
+    String inputCurrentAddress = ("#currentAddress");
+    String btnDdlState = ("#state");
     By optionState = new By.ByXPath("//*[.='NCR']");
-    By btnDdlCity = new By.ByCssSelector("#city");
+    String btnDdlCity = ("#city");
     By optionCity = new By.ByXPath("//*[.='Noida']");
-    By btnSubmit = new By.ByCssSelector("#submit");
+    String btnSubmit = ("#submit");
     //Форма с веденными данными
     By table = new By.ByXPath("//tr/td");
     By tableCell = new By.ByXPath("./td[2]");
-    By btnClose = new By.ByCssSelector("#closeLargeModal");
+    String btnClose = ("#closeLargeModal");
 
     Student student = new Student();
     String nowDate = new SimpleDateFormat("d MMM yyyy", Locale.ENGLISH).format(new Date());
@@ -54,24 +53,22 @@ public class PracticeFormTests {
     }
 
     //Заполнение формы полностью
-    public void fullInTheForm(){
+    public void fullInTheForm() {
         $(inputFirstName).setValue(student.getFirstName());
         $(inputLastName).setValue(student.getLastName());
         $(inputUserEmail).setValue(student.getEmail());
         $(radioBtnGenderOther).click();
         $(inputMobile).setValue(student.getMobile());
         $(inputDateOfBirth).click();
-        $(btnMonth).click();
-        $(btnMonth).$$(optionMonthOrYear).find(Condition.text(student.getMonth())).click();
-        $(btnYear).click();
-        $(btnYear).$$(optionMonthOrYear).find(Condition.text(student.getYear())).click();
+        $(btnMonth).selectOption(student.getMonth());
+        $(btnYear).selectOption(student.getYear());
         $$(btnDay).find(Condition.text(student.getDay())).click();
         $(inputSubjects).setValue(student.getSubjects());
         $$(optionSubjects).find(Condition.text(student.getSubjects())).click();
         $(checkBoxHobbiesMusic).click();
         $(checkBoxHobbiesReading).click();
         $(checkBoxHobbiesSports).click();
-        $(btnSelectPicture).uploadFile(new File("src/test/resources/cat.jpg"));
+        $(btnSelectPicture).uploadFromClasspath("cat.jpg");
         $(inputCurrentAddress).setValue(student.getCurrentAddress());
         $(btnDdlState).hover().click();
         $(optionState).click();
@@ -79,8 +76,9 @@ public class PracticeFormTests {
         $(optionCity).scrollIntoView(true).click();
         $(btnSubmit).scrollIntoView(true).click();
     }
+
     //проверка формы
-    public void checkForm(){
+    public void checkForm() {
         tableElement("Student Name").shouldHave(Condition.text(student.getFullName()));
         tableElement("Student Email").shouldHave(Condition.text(student.getEmail()));
         tableElement("Gender").shouldHave(Condition.text("Other"));
@@ -104,18 +102,13 @@ public class PracticeFormTests {
     }
 
     @Test
-    void checkFullParameters() {
-        fullInTheForm();
-    }
-
-    @Test
-    void checkDataInForm(){
+    void checkDataInForm() {
         fullInTheForm();
         checkForm();
     }
 
     @Test
-    void checkClearForm(){
+    void checkClearForm() {
         fullInTheForm();
         checkForm();
         $(btnClose).scrollIntoView(true).click();
