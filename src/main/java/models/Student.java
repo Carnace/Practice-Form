@@ -20,7 +20,7 @@ public class Student {
         return firstName + " " + lastName;
     }
 
-    public String detDateOfBirth() {
+    public String getDateOfBirth() {
         return day + " " + month + "," + year;
     }
 }
