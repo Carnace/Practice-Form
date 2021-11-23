@@ -8,27 +8,16 @@ import java.util.Locale;
 @Data
 @Accessors(chain = true)
 public class Student {
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String mobile;
+    private String firstName = "Иван";
+    private String lastName = "Смирнов";
+    private String email = "aaa@aa.com";
+    private String mobile = "1234567890";
     private String day = "22";
     private String month = "May";
     private String year = "1977";
     private String subjects = "History";
-    private String currentAddress;
+    private String currentAddress = "Немного текста";
 
-    public Student(typeOfData typeOfData) {
-        switch (typeOfData) {
-            case OTHERDATA:
-                this.firstName = "Иван";
-                this.lastName = "Смирнов";
-                this.email = "aaa@aa.com";
-                this.mobile = "1234567890";
-                this.currentAddress = "Немного текста";
-                break;
-        }
-    }
 
     public String getFullName() {
         return firstName + " " + lastName;
@@ -36,10 +25,5 @@ public class Student {
 
     public String getDateOfBirth() {
         return day + " " + month + "," + year;
-    }
-
-    public static enum typeOfData {
-        RANDOMDATA,
-        OTHERDATA
     }
 }

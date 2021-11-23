@@ -16,7 +16,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class PracticeFormTests extends BaseTest {
 
 
-    Student student = new Student(Student.typeOfData.OTHERDATA);
+    Student student = new Student();
     String nowDate = new SimpleDateFormat("d MMM yyyy", Locale.ENGLISH).format(new Date());
 
     @Test
