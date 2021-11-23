@@ -62,19 +62,19 @@ public class PracticeFormPage {
 
 
     //Заполнение формы полностью
-    public PracticeFormPage fullInTheForm(String firstName, String lastName, String email, String mobile, String subject, String currentAddress) {
-        inputFirstName.setValue(firstName);
-        inputLastName.setValue(lastName);
-        inputUserEmail.setValue(email);
+    public PracticeFormPage fullInTheForm(Student student) {
+        inputFirstName.setValue(student.getFirstName());
+        inputLastName.setValue(student.getLastName());
+        inputUserEmail.setValue(student.getEmail());
         radioBtnGenderOther.click();
-        inputMobile.setValue(mobile);
-        inputSubjects.setValue(subject);
-        optionSubjects.find(Condition.text(subject)).click();
+        inputMobile.setValue(student.getMobile());
+        inputSubjects.setValue(student.getSubjects());
+        optionSubjects.find(Condition.text(student.getSubjects())).click();
         checkBoxHobbiesMusic.click();
         checkBoxHobbiesReading.click();
         checkBoxHobbiesSports.click();
         btnSelectPicture.uploadFromClasspath("cat.jpg");
-        inputCurrentAddress.setValue(currentAddress);
+        inputCurrentAddress.setValue(student.getCurrentAddress());
         btnDdlState.hover().click();
         optionState.click();
         btnDdlCity.hover().click();
@@ -90,16 +90,16 @@ public class PracticeFormPage {
     }
 
     //проверка формы
-    public PracticeFormPage checkForm(String fullName, String email, String mobile, String subject, String date, String currentAddress) {
-        tableElement("Student Name").shouldHave(Condition.text(fullName));
-        tableElement("Student Email").shouldHave(Condition.text(email));
+    public PracticeFormPage checkForm(Student student) {
+        tableElement("Student Name").shouldHave(Condition.text(student.getFullName()));
+        tableElement("Student Email").shouldHave(Condition.text(student.getEmail()));
         tableElement("Gender").shouldHave(Condition.text("Other"));
-        tableElement("Mobile").shouldHave(Condition.text(mobile));
-        tableElement("Date of Birth").shouldHave(Condition.text(date));
-        tableElement("Subjects").shouldHave(Condition.text(subject));
+        tableElement("Mobile").shouldHave(Condition.text(student.getMobile()));
+        tableElement("Date of Birth").shouldHave(Condition.text(student.getDateOfBirth()));
+        tableElement("Subjects").shouldHave(Condition.text(student.getSubjects()));
         tableElement("Hobbies").shouldHave(Condition.text("Music, Reading, Sports"));
         tableElement("Picture").shouldHave(Condition.text("cat.jpg"));
-        tableElement("Address").shouldHave(Condition.text(currentAddress));
+        tableElement("Address").shouldHave(Condition.text(student.getCurrentAddress()));
         tableElement("State and City").shouldHave(Condition.text("NCR Delhi"));
 
         return this;

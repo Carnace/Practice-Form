@@ -13,26 +13,26 @@ import java.util.Locale;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.*;
 
-public class PracticeFormTests extends BaseTest{
+public class PracticeFormTests extends BaseTest {
 
 
-    Student student = new Student();
+    Student student = new Student(Student.typeOfData.OTHERDATA);
     String nowDate = new SimpleDateFormat("d MMM yyyy", Locale.ENGLISH).format(new Date());
 
     @Test
     void checkDataInForm() {
         practiceFormPage.openPage()
-                .fullInTheForm(student.getFirstName(),student.getLastName(),student.getEmail(),student.getMobile(),student.getSubjects(),student.getCurrentAddress())
-                .calendar.setDate(student.getDay(),student.getMonth(),student.getYear());
+                .fullInTheForm(student)
+                .calendar.setDate(student.getDay(), student.getMonth(), student.getYear());
         practiceFormPage.sendForm()
-                .checkForm(student.getFullName(),student.getEmail(),student.getMobile(),student.getSubjects(),student.getDateOfBirth(), student.getCurrentAddress());
+                .checkForm(student);
     }
 
     @Test
     void checkClearForm() {
         practiceFormPage.openPage()
-                .fullInTheForm(student.getFirstName(),student.getLastName(),student.getEmail(),student.getMobile(),student.getSubjects(),student.getCurrentAddress())
-                .calendar.setDate(student.getDay(),student.getMonth(),student.getYear());
+                .fullInTheForm(student)
+                .calendar.setDate(student.getDay(), student.getMonth(), student.getYear());
         practiceFormPage.sendForm()
                 .checkDataFormAfterClose(nowDate);
     }
