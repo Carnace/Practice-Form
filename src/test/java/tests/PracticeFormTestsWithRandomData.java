@@ -2,6 +2,7 @@ package tests;
 
 import com.github.javafaker.Faker;
 import models.Student;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
@@ -12,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 
 public class PracticeFormTestsWithRandomData extends BaseTest {
 
-    Faker faker = new Faker(new Locale("ru"));
+    Faker faker = new Faker(new Locale("en"));
     String firstName = faker.name().firstName();
     String lastName = faker.name().lastName();
     String email = faker.internet().emailAddress();
@@ -24,6 +25,7 @@ public class PracticeFormTestsWithRandomData extends BaseTest {
 
 
     @Test
+    @DisplayName("Отправка и проверка формы")
     void checkDataInForm() {
         practiceFormPage.openPage()
                 .fullInTheForm(student)

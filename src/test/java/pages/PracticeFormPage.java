@@ -3,6 +3,7 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 import models.Student;
 import pages.components.CalendarComponent;
 import pages.components.CalendarComponent.*;
@@ -47,7 +48,7 @@ public class PracticeFormPage {
 
     private final String FORM_TITLE = "Student Registration Form";
 
-    //Поиск ячейки в таблице
+    @Step("Поиск ячейки в таблице")
     public SelenideElement tableElement(String nameOfCollum) {
         SelenideElement se;
         return se = (table).find(Condition.text(nameOfCollum)).parent().$x(tableCell);
@@ -60,8 +61,7 @@ public class PracticeFormPage {
         return this;
     }
 
-
-    //Заполнение формы полностью
+    @Step("Заполнение формы полностью")
     public PracticeFormPage fullInTheForm(Student student) {
         inputFirstName.setValue(student.getFirstName());
         inputLastName.setValue(student.getLastName());
@@ -82,14 +82,14 @@ public class PracticeFormPage {
 
         return this;
     }
-
+    @Step("Отправка формы")
     public PracticeFormPage sendForm() {
         btnSubmit.scrollIntoView(true).click();
 
         return this;
     }
 
-    //проверка формы
+    @Step("Проверка заполненной формы ")
     public PracticeFormPage checkForm(Student student) {
         tableElement("Student Name").shouldHave(Condition.text(student.getFullName()));
         tableElement("Student Email").shouldHave(Condition.text(student.getEmail()));
@@ -105,10 +105,9 @@ public class PracticeFormPage {
         return this;
     }
 
-    //Проверка, что после закрытия форма пустая
+    @Step("Проверка, что после закрытия форма пустая")
     public PracticeFormPage checkDataFormAfterClose(String date) {
         btnClose.scrollIntoView(true).click();
-        //Проверка, что после закрытия форма пустая
         inputFirstName.shouldBe(Condition.empty);
         inputLastName.shouldBe(Condition.empty);
         inputUserEmail.shouldBe(Condition.empty);

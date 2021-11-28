@@ -4,6 +4,7 @@ import com.codeborne.selenide.Configuration;
 import models.Student;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
@@ -20,6 +21,7 @@ public class PracticeFormTests extends BaseTest {
     String nowDate = new SimpleDateFormat("d MMM yyyy", Locale.ENGLISH).format(new Date());
 
     @Test
+    @DisplayName("Отправка и проверка формы")
     void checkDataInForm() {
         practiceFormPage.openPage()
                 .fullInTheForm(student)
@@ -29,6 +31,7 @@ public class PracticeFormTests extends BaseTest {
     }
 
     @Test
+    @DisplayName("Проверка, что после отправки форма пустая")
     void checkClearForm() {
         practiceFormPage.openPage()
                 .fullInTheForm(student)
