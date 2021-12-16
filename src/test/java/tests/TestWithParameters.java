@@ -7,7 +7,6 @@ import org.junit.jupiter.api.Test;
 import pages.LoginPage;
 import service.LoginConfig;
 
-
 @Tag("owner")
 public class TestWithParameters extends BaseTest{
     public LoginConfig loginConfig = ConfigFactory.create(LoginConfig.class);
