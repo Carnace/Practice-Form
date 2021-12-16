@@ -22,8 +22,6 @@ public class PracticeFormTestsWithRandomData extends BaseTest {
     String streetAddress = faker.address().streetAddress();
 
     Student student = new Student().setFirstName(firstName).setLastName(lastName).setEmail(email).setMobile(mobile).setCurrentAddress(streetAddress);
-    String nowDate = new SimpleDateFormat("d MMM yyyy", Locale.ENGLISH).format(new Date());
-
 
     @Test
     @DisplayName("Отправка и проверка формы")
