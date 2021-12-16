@@ -11,12 +11,13 @@ import service.LoginConfig;
 public class TestWithParameters extends BaseTest{
     public LoginConfig loginConfig = ConfigFactory.create(LoginConfig.class);
 
+    String address = System.getProperty("url");
+
     @Test
     @DisplayName("Проверка авторизации")
     void checkAuthorization(){
         String login = loginConfig.login();
         String password = loginConfig.password();
-        String address = System.getProperty("url");
 
         loginPage.openPage(address)
                 .authorization(login,password)
