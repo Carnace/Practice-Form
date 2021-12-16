@@ -47,6 +47,7 @@ public class PracticeFormPage {
     public CalendarComponent calendar = new CalendarComponent();
 
     private final String FORM_TITLE = "Student Registration Form";
+    private final String URL = "https://demoqa.com/automation-practice-form";
 
     @Step("Поиск ячейки в таблице")
     public SelenideElement tableElement(String nameOfCollum) {
@@ -55,7 +56,7 @@ public class PracticeFormPage {
     }
 
     public PracticeFormPage openPage() {
-        open("https://demoqa.com/automation-practice-form");
+        open(URL);
         formTitle.shouldHave(text(FORM_TITLE));
 
         return this;

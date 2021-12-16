@@ -2,10 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import models.Student;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,7 +10,7 @@ import java.util.Locale;
 
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.*;
-
+@Tag("properties")
 public class PracticeFormTests extends BaseTest {
 
 

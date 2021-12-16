@@ -9,17 +9,18 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class LoginPage {
     private SelenideElement
-            formTitle = $(".practice-form-wrapper"),
+            formTitle = $(".main-header"),
             inputUserName = $("#userName"),
             inputPassword = $("#password"),
             btnLogin = $("#login"),
             textUserName = $("#userName-value");
 
     private final String FORM_TITLE = "Login";
+    private final String URL = "https://demoqa.com/login";
 
     @Step("Открытие страницы login")
     public LoginPage openPage(){
-        open("https://demoqa.com/login");
+        open(URL);
         formTitle.shouldHave(Condition.text(FORM_TITLE));
 
         return this;
