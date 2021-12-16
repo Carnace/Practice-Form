@@ -67,11 +67,13 @@ task practiceForm_tests(type: Test) {
         includeTags "PracticeForm"
     }
 }
+
 task owner_tests(type: Test) {
     useJUnitPlatform {
         includeTags "owner"
     }
 }
+
 task all_tests(type: Test) {
     useJUnitPlatform {
         includeTags "PracticeForm"

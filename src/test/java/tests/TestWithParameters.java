@@ -16,7 +16,7 @@ public class TestWithParameters extends BaseTest{
     void checkAuthorization(){
         String login = loginConfig.login();
         String password = loginConfig.password();
-        String address = System.getProperty("url","https://demoqa.com/login");
+        String address = System.getProperty("url");
 
         loginPage.openPage(address)
                 .authorization(login,password)
