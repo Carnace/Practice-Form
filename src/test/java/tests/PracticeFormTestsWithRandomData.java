@@ -3,6 +3,7 @@ package tests;
 import com.github.javafaker.Faker;
 import models.Student;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import java.text.SimpleDateFormat;
@@ -10,7 +11,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-
+@Tag("properties")
 public class PracticeFormTestsWithRandomData extends BaseTest {
 
     Faker faker = new Faker(new Locale("en"));
