@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-@Tag("properties")
+@Tag("PracticeForm")
 public class PracticeFormTestsWithRandomData extends BaseTest {
 
     Faker faker = new Faker(new Locale("en"));

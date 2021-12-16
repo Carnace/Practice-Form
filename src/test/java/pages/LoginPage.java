@@ -16,11 +16,10 @@ public class LoginPage {
             textUserName = $("#userName-value");
 
     private final String FORM_TITLE = "Login";
-    private final String URL = "https://demoqa.com/login";
 
     @Step("Открытие страницы login")
-    public LoginPage openPage(){
-        open(URL);
+    public LoginPage openPage(String url){
+        open(url);
         formTitle.shouldHave(Condition.text(FORM_TITLE));
 
         return this;
