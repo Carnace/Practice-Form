@@ -28,7 +28,7 @@
 .allure/
 .gradle/
 allure-results/
-allure-report/
+build/allure-report/
 gradle/
 build/
 bin/
