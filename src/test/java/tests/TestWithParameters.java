@@ -16,8 +16,8 @@ public class TestWithParameters extends BaseTest{
     @Test
     @DisplayName("Проверка авторизации")
     void checkAuthorization(){
-        String login = loginConfig.login();
-        String password = loginConfig.password();
+        String login = loginConfig.loginFromTest();
+        String password = loginConfig.passwordFromTest();
 
         loginPage.openPage(address)
                 .authorization(login,password)
