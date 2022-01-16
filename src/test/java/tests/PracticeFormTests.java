@@ -10,9 +10,8 @@ import java.util.Locale;
 
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Selenide.*;
-@Tag("properties")
+@Tag("PracticeForm")
 public class PracticeFormTests extends BaseTest {
-
 
     Student student = new Student();
     String nowDate = new SimpleDateFormat("d MMM yyyy", Locale.ENGLISH).format(new Date());

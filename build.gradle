@@ -52,6 +52,7 @@ dependencies {
 }
 
 tasks.withType(Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform()
 
     testLogging {
@@ -59,5 +60,24 @@ tasks.withType(Test) {
             events "started", "skipped", "failed", "standard_error", "standard_out"
             exceptionFormat "short"
         }
+    }
+}
+
+task practiceForm_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags "PracticeForm"
+    }
+}
+
+task owner_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags "owner"
+    }
+}
+
+task all_tests(type: Test) {
+    useJUnitPlatform {
+        includeTags "PracticeForm"
+        includeTags "owner"
     }
 }
