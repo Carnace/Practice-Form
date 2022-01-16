@@ -11,7 +11,7 @@ import service.LoginConfig;
 public class TestWithParameters extends BaseTest{
     public LoginConfig loginConfig = ConfigFactory.create(LoginConfig.class);
 
-    String address = System.getProperty("urlFromTest");
+    String address = System.getProperty("urlFromTest", "https://demoqa.com/login");
 
     @Test
     @DisplayName("Проверка авторизации")
