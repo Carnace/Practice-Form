@@ -9,6 +9,7 @@ import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import pages.LoginPage;
 import pages.PracticeFormPage;
 import service.LoginConfig;
 
@@ -16,6 +17,7 @@ import static java.lang.String.format;
 
 public class BaseTest {
     PracticeFormPage practiceFormPage = new PracticeFormPage();
+    LoginPage loginPage = new LoginPage();
 
     @BeforeAll
     static void setup() {
